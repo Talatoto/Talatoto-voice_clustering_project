@@ -13,7 +13,6 @@ def rms_normalize(y, target_db=-20.0):
         y = y / peak
     return y
 
-# input/output — use your Downloads folder directly
 in_file = Path(r"C:\Users\Tala\Downloads\output_recordings\session.wav")
 out_file = Path(r"C:\Users\Tala\Downloads\output_recordings\session_16k.wav")
 
@@ -22,3 +21,4 @@ y = rms_normalize(y, target_db=-20.0)
 sf.write(out_file, y, TARGET_SR, subtype="PCM_16")
 
 print("wrote:", out_file)
+
