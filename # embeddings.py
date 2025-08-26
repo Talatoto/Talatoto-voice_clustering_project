@@ -4,7 +4,6 @@ import numpy as np, pandas as pd
 import torch, torchaudio
 from speechbrain.pretrained import EncoderClassifier
 
-# -------- paths (your style) --------
 in_dir  = Path(r"C:\Users\Tala\Downloads\output_recordings\clean")       # VAD output
 out_dir = Path(r"C:\Users\Tala\Downloads\output_recordings\embeddings")  # will be created
 out_dir.mkdir(parents=True, exist_ok=True)
@@ -15,7 +14,7 @@ def load_mono16k(path):
     wav, sr = torchaudio.load(str(path))
     if wav.shape[0] > 1:             # to mono
         wav = wav.mean(dim=0, keepdim=True)
-    if sr != 16000:                   # resample if needed
+    if sr != 16000:                   
         wav = torchaudio.functional.resample(wav, sr, 16000)
         sr = 16000
     return wav, sr
@@ -40,3 +39,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
