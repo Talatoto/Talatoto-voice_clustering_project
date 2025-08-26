@@ -22,7 +22,7 @@ class Frame(collections.namedtuple("Frame", ["bytes","timestamp","duration"])):
     __slots__ = ()
 
 def read_wave(path: Path):
-    # expects 16kHz mono 16-bit PCM (your preprocess did this)
+    # expects 16kHz mono 16-bit PCM 
     with contextlib.closing(wave.open(str(path), "rb")) as wf:
         assert wf.getnchannels() == 1, "expected mono; run preprocess first"
         assert wf.getsampwidth() == 2, "expected 16-bit PCM"
@@ -88,3 +88,4 @@ for audio_bytes, t0, t1 in vad_collect(sr, FRAME_MS, PADDING_MS, vad, frames):
     count += 1
 
 print("segments written:", count, "->", out_dir)
+
