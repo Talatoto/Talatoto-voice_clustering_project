@@ -8,7 +8,7 @@ output_session = Path(r"C:\Users\Tala\Downloads\output_recordings\session.wav")
 output_enroll = Path(r"C:\Users\Tala\Downloads\enroll")
 
 
-speakers = ["jackson", "george", "lucas"]  # update if you have different
+speakers = ["jackson", "george", "lucas"] 
 per_speaker = 6
 silence_ms = 300  # pause between utterances
 
@@ -20,7 +20,7 @@ segments = []
 for spk in speakers:
     files = sorted([f for f in input_dir.glob(f"*{spk}*.wav")])[:per_speaker]
     random.shuffle(files)
-    # save one for enrollment
+    
     enroll_file = files[0]
     enroll_audio = AudioSegment.from_wav(enroll_file)
     out_dir = output_enroll / spk
@@ -41,3 +41,4 @@ session.export(output_session, format="wav")
 
 print("Saved session:", output_session)
 print("Saved enrollment clips in:", output_enroll)
+
