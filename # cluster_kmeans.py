@@ -6,7 +6,7 @@ from sklearn.metrics import silhouette_score
 
 emb_dir = Path(r"C:\Users\Tala\Downloads\output_recordings\embeddings")
 out_csv = Path(r"C:\Users\Tala\Downloads\output_recordings\clusters_k.csv")
-k = 3  # set your expected number of speakers
+k = 3 
 
 man = pd.read_csv(emb_dir / "manifest.csv")
 X = np.vstack([np.load(p)["embedding"] for p in man["embedding"]])
@@ -22,3 +22,4 @@ out.to_csv(out_csv, index=False)
 if len(set(labels)) > 1:
     print("silhouette (cosine):", silhouette_score(X, labels, metric="cosine"))
 print("wrote:", out_csv, "| #clusters:", len(set(labels)))
+
